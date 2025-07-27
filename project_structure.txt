@@ -1,0 +1,176 @@
+Structure du projet (exclusions : node_modules, dist, public, nhost, .vscode, .nuxt, .output, .git, .bolt, .next)
+========================================
+
+📄 .gitignore
+📄 bun.lockb
+📄 components.json
+📄 eslint.config.js
+📄 index.html
+📄 liste.mjs
+📄 package-lock.json
+📄 package.json
+📄 postcss.config.js
+📄 project_structure.txt
+📄 README.md
+📁 src
+  📄 App.css
+  📄 App.tsx
+  📁 components
+    📄 AdminOnboardingModal.tsx
+    📄 AdvancedSettings.tsx
+    📄 AppRouter.tsx
+    📄 AuthStatusDebug.tsx
+    📄 BrainModal.tsx
+    📄 BrandSetupWizard.tsx
+    📄 ChatWidget.tsx
+    📄 ClientDetailModal.tsx
+    📄 ClientForm.tsx
+    📄 CreateOrganisationForm.tsx
+    📄 Dashboard.tsx
+    📄 DashboardCard.tsx
+    📄 DeleteAllModal.tsx
+    📄 ErrorBoundary.tsx
+    📄 FileUploadTest.tsx
+    📄 Footer.tsx
+    📄 GarageInfo.tsx
+    📄 GarageSetupModal.tsx
+    📄 Header.tsx
+    📁 init
+      📄 BrandForm.tsx
+      📄 OrganisationForm.tsx
+      📄 SuperAdminForm.tsx
+    📄 InteractiveFooter.tsx
+    📁 layout
+      📄 Layout.tsx
+      📄 Navbar.tsx
+      📄 Sidebar.tsx
+    📄 MultiGarageAdminPanel.tsx
+    📄 Navbar.tsx
+    📄 NotificationCenter.tsx
+    📄 OrganisationDashboard.tsx
+    📄 OrganisationGuard.tsx
+    📄 OrganisationOnboarding.tsx
+    📄 OrganisationProvider.tsx
+    📄 OrganisationSelector.tsx
+    📄 PageNavigation.tsx
+    📄 PhotoEvidenceModal.tsx
+    📁 pricing
+      📄 PricingModal.tsx
+    📄 RepairForm.tsx
+    📄 ReparationDetailModal.tsx
+    📄 ReparationModal.tsx
+    📄 RoleGuard.tsx
+    📄 SmsValidationModal.tsx
+    📄 SplashScreen.tsx
+    📄 StockDetailModal.tsx
+    📄 StockModal.tsx
+    📄 ThirdPartyForm.tsx
+    📁 ui
+      📄 accordion.tsx
+      📄 alert-dialog.tsx
+      📄 alert.tsx
+      📄 aspect-ratio.tsx
+      📄 avatar.tsx
+      📄 badge.tsx
+      📄 breadcrumb.tsx
+      📄 button.tsx
+      📄 calendar.tsx
+      📄 card.tsx
+      📄 carousel.tsx
+      📄 chart.tsx
+      📄 checkbox.tsx
+      📄 collapsible.tsx
+      📄 command.tsx
+      📄 context-menu.tsx
+      📄 dialog.tsx
+      📄 drawer.tsx
+      📄 dropdown-menu.tsx
+      📄 file-upload.tsx
+      📄 form.tsx
+      📄 hover-card.tsx
+      📄 input-otp.tsx
+      📄 input.tsx
+      📄 interactive-table.tsx
+      📄 label.tsx
+      📄 loading-spinner.tsx
+      📄 menubar.tsx
+      📄 modal.tsx
+      📄 navigation-menu.tsx
+      📄 pagination.tsx
+      📄 popover.tsx
+      📄 progress.tsx
+      📄 protected-route.tsx
+      📄 radio-group.tsx
+      📄 resizable.tsx
+      📄 scroll-area.tsx
+      📄 select.tsx
+      📄 separator.tsx
+      📄 sheet.tsx
+      📄 sidebar.tsx
+      📄 skeleton.tsx
+      📄 slider.tsx
+      📄 sonner.tsx
+      📄 switch.tsx
+      📄 table.tsx
+      📄 tabs.tsx
+      📄 textarea.tsx
+      📄 toast.tsx
+      📄 toaster.tsx
+      📄 toggle-group.tsx
+      📄 toggle.tsx
+      📄 tooltip.tsx
+      📄 use-toast.ts
+    📄 UnifiedFooter.tsx
+    📄 UnifiedHeader.tsx
+    📄 UnifiedSplashScreen.tsx
+    📄 UserMenu.tsx
+    📄 VehicleDetailModal.tsx
+    📄 VehicleForm.tsx
+  📁 contexts
+    📄 AuthContext.tsx
+  📁 hooks
+    📄 use-mobile.tsx
+    📄 use-toast.ts
+    📄 useAuth.ts
+    📄 useMockData.tsx
+    📄 useMultiInstanceInit.ts
+  📄 index.css
+  📁 integrations
+    📁 supabase
+      📄 client.ts
+      📄 types.ts
+  📁 lib
+    📄 utils.ts
+  📄 main.tsx
+  📁 pages
+    📄 Aide.tsx
+    📄 APropos.tsx
+    📄 Auth.tsx
+    📄 AuthPage.tsx
+    📄 ClientsAjouter.tsx
+    📄 ClientsHistorique.tsx
+    📄 ClientsListe.tsx
+    📄 Connexion.tsx
+    📄 Dashboard.tsx
+    📄 Index.tsx
+    📄 InitialisationPage.tsx
+    📄 NotFound.tsx
+    📄 OrganisationOnboarding.tsx
+    📄 Profil.tsx
+    📄 Reparations.tsx
+    📄 Settings.tsx
+    📄 Stock.tsx
+    📄 ThirdPartyDemo.tsx
+    📄 Vehicules.tsx
+  📁 services
+    📄 multiInstanceInit.ts
+  📁 types
+    📄 garage.ts
+  📄 vite-env.d.ts
+📁 supabase
+  📄 config.toml
+📄 tailwind.config.ts
+📄 tsconfig.app.json
+📄 tsconfig.json
+📄 tsconfig.node.json
+📄 vite.config.ts

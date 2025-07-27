@@ -3,12 +3,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
-import { 
-  Car, 
-  Wrench, 
-  FileText, 
-  TrendingUp, 
-  AlertTriangle, 
+import {
+  Car,
+  Wrench,
+  FileText,
+  TrendingUp,
+  AlertTriangle,
   Clock,
   DollarSign,
   Users
@@ -16,6 +16,11 @@ import {
 
 const Dashboard = () => {
   const { garageUser } = useAuth();
+  // Ajout : récupération du plan de l'organisation (mock ou à remplacer par vrai fetch)
+  const organisation = { subscription_type: 'free' }; // À remplacer par vrai fetch organisation
+
+  // Ajout : détection plan Free
+  const isFree = organisation.subscription_type === 'free';
 
   const stats = [
     {
@@ -111,12 +116,22 @@ const Dashboard = () => {
 
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
+      {/* Badge Essai gratuit */}
+      {organisation.subscription_type === 'free' && (
+        <div className="flex justify-center mb-4">
+          <span className="px-4 py-1 rounded-full bg-green-100 text-green-700 font-semibold text-sm shadow-md border border-green-300 animate-fade-in">
+            ESSAI GRATUIT - 1 SEMAINE
+          </span>
+        </div>
+      )}
       <div className="flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">
           Bonjour {garageUser?.full_name?.split(' ')[0]} 👋
         </h2>
         <div className="flex items-center space-x-2">
-          <Button>Nouvelle intervention</Button>
+          <Button disabled={isFree} title={isFree ? 'Fonctionnalité premium - activez un plan payant' : ''}>
+            Nouvelle intervention
+          </Button>
         </div>
       </div>
 
@@ -213,19 +228,19 @@ const Dashboard = () => {
           </CardHeader>
           <CardContent>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <Button variant="outline" className="h-20 flex-col">
+              <Button variant="outline" className="h-20 flex-col" disabled={isFree} title={isFree ? 'Fonctionnalité premium - activez un plan payant' : ''}>
                 <Car className="h-6 w-6 mb-2" />
                 Ajouter véhicule
               </Button>
-              <Button variant="outline" className="h-20 flex-col">
+              <Button variant="outline" className="h-20 flex-col" disabled={isFree} title={isFree ? 'Fonctionnalité premium - activez un plan payant' : ''}>
                 <Wrench className="h-6 w-6 mb-2" />
                 Nouvelle intervention
               </Button>
-              <Button variant="outline" className="h-20 flex-col">
+              <Button variant="outline" className="h-20 flex-col" disabled={isFree} title={isFree ? 'Fonctionnalité premium - activez un plan payant' : ''}>
                 <FileText className="h-6 w-6 mb-2" />
                 Créer facture
               </Button>
-              <Button variant="outline" className="h-20 flex-col">
+              <Button variant="outline" className="h-20 flex-col" disabled={isFree} title={isFree ? 'Fonctionnalité premium - activez un plan payant' : ''}>
                 <Users className="h-6 w-6 mb-2" />
                 Gérer équipe
               </Button>
