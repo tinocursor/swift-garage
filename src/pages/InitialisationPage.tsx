@@ -1,5 +1,5 @@
-import AdminSetupWizard from '@/components/AdminSetupWizard';
+import AdminSetupWizard from '@/components/AdminSetupWizardV2';
 
 export default function InitialisationPage() {
-  return <AdminSetupWizard onComplete={() => window.location.replace('/dashboard')} />;
+  return <AdminSetupWizard onComplete={() => window.location.replace('/')} />;
 }

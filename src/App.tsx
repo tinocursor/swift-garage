@@ -4,31 +4,55 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ProtectedRoute } from "@/components/ui/protected-route";
 import { Layout } from "@/components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
 import InitialisationPage from "./pages/InitialisationPage";
-import UnifiedSplashScreen from './components/UnifiedSplashScreen';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [splashDone, setSplashDone] = useState(false);
+  const [showInitialSetup, setShowInitialSetup] = useState(false);
+
+  useEffect(() => {
+    // Check if initial setup is needed
+    const setupComplete = localStorage.getItem('setup_complete');
+    if (!setupComplete) {
+      setShowInitialSetup(true);
+    }
+  }, []);
+
+  if (showInitialSetup) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="*" element={<InitialisationPage />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <AuthProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            {!splashDone && <UnifiedSplashScreen onComplete={() => setSplashDone(true)} />}
-            {splashDone && (
+      <ThemeProvider>
+        <TooltipProvider>
+          <AuthProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
               <Routes>
-                <Route path="/init" element={<InitialisationPage />} />
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/" element={
                   <ProtectedRoute>
@@ -59,10 +83,10 @@ const App = () => {
                 } />
                 <Route path="*" element={<NotFound />} />
               </Routes>
-            )}
-          </BrowserRouter>
-        </AuthProvider>
-      </TooltipProvider>
+            </BrowserRouter>
+          </AuthProvider>
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };

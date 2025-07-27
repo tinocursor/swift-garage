@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import UnifiedHeader from './UnifiedHeader';
-import UnifiedFooter from './UnifiedFooter';
-import Logo from './ui/Logo';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 // Types pour chaque étape
 export type PlanType = 'free' | 'monthly' | 'lifetime';
@@ -27,51 +26,104 @@ const AdminSetupWizard: React.FC<AdminSetupWizardProps> = ({ onComplete }) => {
   // TODO: Ajouter la logique de validation et de soumission
 
   return (
-    <div className={`min-h-screen flex flex-col ${currentBg} transition-colors duration-500`}>
-      <UnifiedHeader />
-      <main className="flex-1 flex flex-col items-center justify-center py-8">
-        <Logo size={64} animated className="mb-4" />
-        {/* Navigation par étapes */}
+    <div className={`min-h-screen flex flex-col ${currentBg} transition-colors duration-500 p-8`}>
+      <main className="flex-1 flex flex-col items-center justify-center">
         {step === 'plan' && (
-          <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">Choisissez votre plan</h2>
-            <div className="flex flex-col gap-4">
-              <button className="py-3 rounded-full bg-green-500 text-white font-bold text-lg shadow hover:bg-green-600 transition-all" onClick={() => { setPlan('free'); setStep('admin'); }}>Plan Gratuit</button>
-              <button className="py-3 rounded-full bg-orange-500 text-white font-bold text-lg shadow hover:bg-orange-600 transition-all" onClick={() => { setPlan('monthly'); setStep('admin'); }}>Plan Mensuel</button>
-              <button className="py-3 rounded-full bg-blue-600 text-white font-bold text-lg shadow hover:bg-blue-700 transition-all" onClick={() => { setPlan('lifetime'); setStep('admin'); }}>Plan Vie</button>
-            </div>
-          </div>
+          <Card className="w-full max-w-md">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl">Choisissez votre plan</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4">
+              <Button 
+                variant="default" 
+                onClick={() => { setPlan('free'); setStep('admin'); }}
+                className="py-3 text-lg"
+              >
+                Plan Gratuit
+              </Button>
+              <Button 
+                variant="default" 
+                onClick={() => { setPlan('monthly'); setStep('admin'); }}
+                className="py-3 text-lg"
+              >
+                Plan Mensuel
+              </Button>
+              <Button 
+                variant="default" 
+                onClick={() => { setPlan('lifetime'); setStep('admin'); }}
+                className="py-3 text-lg"
+              >
+                Plan Vie
+              </Button>
+            </CardContent>
+          </Card>
         )}
         {step === 'admin' && (
-          <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold mb-4">Création du compte administrateur</h2>
-            {/* TODO: Formulaire admin (nom, email, téléphone, mot de passe, etc) */}
-            <button className="mt-6 w-full py-3 rounded-full bg-primary text-white font-bold" onClick={() => setStep('organisation')}>Suivant</button>
-          </div>
+          <Card className="w-full max-w-md">
+            <CardHeader>
+              <CardTitle className="text-2xl">Compte administrateur</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4 text-muted-foreground">Configuration du compte admin en cours...</p>
+              <Button 
+                onClick={() => setStep('organisation')}
+                className="w-full"
+              >
+                Suivant
+              </Button>
+            </CardContent>
+          </Card>
         )}
         {step === 'organisation' && (
-          <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold mb-4">Organisation</h2>
-            {/* TODO: Formulaire organisation (nom, code, logo, etc) */}
-            <button className="mt-6 w-full py-3 rounded-full bg-primary text-white font-bold" onClick={() => setStep('brand')}>Suivant</button>
-          </div>
+          <Card className="w-full max-w-md">
+            <CardHeader>
+              <CardTitle className="text-2xl">Organisation</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4 text-muted-foreground">Configuration de l'organisation en cours...</p>
+              <Button 
+                onClick={() => setStep('brand')}
+                className="w-full"
+              >
+                Suivant
+              </Button>
+            </CardContent>
+          </Card>
         )}
         {step === 'brand' && (
-          <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold mb-4">Configuration du garage</h2>
-            {/* TODO: Formulaire brand (infos, logo, couleurs, etc) */}
-            <button className="mt-6 w-full py-3 rounded-full bg-primary text-white font-bold" onClick={() => setStep('done')}>Terminer</button>
-          </div>
+          <Card className="w-full max-w-md">
+            <CardHeader>
+              <CardTitle className="text-2xl">Configuration du garage</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4 text-muted-foreground">Configuration de l'identité visuelle en cours...</p>
+              <Button 
+                onClick={() => setStep('done')}
+                className="w-full"
+              >
+                Terminer
+              </Button>
+            </CardContent>
+          </Card>
         )}
         {step === 'done' && (
-          <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">Initialisation terminée !</h2>
-            <p>Votre espace est prêt. Vous pouvez maintenant vous connecter.</p>
-            <button className="mt-6 w-full py-3 rounded-full bg-primary text-white font-bold" onClick={onComplete}>Aller au Dashboard</button>
-          </div>
+          <Card className="w-full max-w-md text-center">
+            <CardContent className="pt-6">
+              <h2 className="text-2xl font-bold mb-4">Initialisation terminée !</h2>
+              <p className="mb-6 text-muted-foreground">Votre espace est prêt. Vous pouvez maintenant vous connecter.</p>
+              <Button 
+                onClick={() => {
+                  localStorage.setItem('setup_complete', 'true');
+                  onComplete();
+                }}
+                className="w-full"
+              >
+                Aller au Dashboard
+              </Button>
+            </CardContent>
+          </Card>
         )}
       </main>
-      <UnifiedFooter />
     </div>
   );
 };

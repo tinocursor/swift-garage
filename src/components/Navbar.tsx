@@ -11,11 +11,12 @@ import {
   BarChart3,
   Plus
 } from 'lucide-react';
-import { useAuth } from '@/hooks/useAuth';
+// import { useAuth } from '@/hooks/useAuth';
 import { cn } from '@/lib/utils';
 
 const Navbar: React.FC = () => {
-  const { role } = useAuth();
+  // const { role } = useAuth();
+  const role = 'admin'; // Mock role for now
 
   const navigationItems = [
     {
